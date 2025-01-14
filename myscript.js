@@ -77,3 +77,5 @@ function playGame() {
         console.log("You win!")
     }
 }
+
+playGame();
