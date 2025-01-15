@@ -15,8 +15,8 @@ function getComputerChoice(){
     }
 }
 
-function getPlayerChoice(){
-    let userInput = prompt("Enter rock, paper or scissors").trim().toLowerCase();
+function getPlayerChoice(userInput){
+    userInput = userInput.trim().toLowerCase();
     console.log(userInput)
     if(userInput !== "rock" && userInput !== "paper" && userInput !== "scissors"){
         console.log("wrong input please try again");
@@ -31,7 +31,9 @@ let humanScore = 0;
 let computerScore = 0;
 
 
-function playRound(playerChoice = getPlayerChoice(), computerChoice = getComputerChoice()) {
+function playRound(buttonChoice, computerChoice = getComputerChoice()) {
+
+    let playerChoice = getPlayerChoice(buttonChoice);
 
     if(playerChoice === "rock" && computerChoice === "scissors") {
         console.log(`You win! ${playerChoice} beats ${computerChoice}`);
@@ -65,17 +67,31 @@ function playRound(playerChoice = getPlayerChoice(), computerChoice = getCompute
     }
 }
 
-function playGame() {
-    
-    for(let count = 0; count < 5; count++){
-        playRound();
-    }
-    if(humanScore < computerScore){
-        console.log("Computer Wins!")
-    }
-    else {
-        console.log("You win!")
-    }
-}
+const rock = document.createElement("button");
+const paper = document.createElement("button");
+const scissors = document.createElement("button");
 
-playGame();
+const body = document.querySelector("body");
+
+rock.classList.add("rockbtn");
+paper.classList.add("paperbtn");
+scissors.classList.add("scissorsbtn");
+
+rock.textContent = "rock";
+paper.textContent = "paper";
+scissors.textContent = "scissors";
+
+rock.addEventListener("click", () => playRound("rock"));
+paper.addEventListener("click", () => playRound("paper"));
+scissors.addEventListener("click", () => playRound("scissors"));
+
+body.appendChild(rock);
+body.appendChild(paper);
+body.appendChild(scissors);
+
+
+
+
+
+
+
