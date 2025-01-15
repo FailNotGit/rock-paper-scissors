@@ -36,34 +36,34 @@ function playRound(buttonChoice, computerChoice = getComputerChoice()) {
     let playerChoice = getPlayerChoice(buttonChoice);
 
     if(playerChoice === "rock" && computerChoice === "scissors") {
-        console.log(`You win! ${playerChoice} beats ${computerChoice}`);
+        results.textContent = `You win! ${playerChoice} beats ${computerChoice}`;
         humanScore++;
     }
     else if (playerChoice === "rock" && computerChoice === "paper"){
-            console.log(`You lose! ${computerChoice} beats ${playerChoice}`);
+            results.textContent = `You lose! ${computerChoice} beats ${playerChoice}`;
             computerScore ++;
         }
     
     else if(playerChoice === "scissors" && computerChoice === "paper") {
-        console.log(`You win! ${playerChoice} beats ${computerChoice}`);
+        results.textContent = `You win! ${playerChoice} beats ${computerChoice}`;
         humanScore++;
     }
     else if(playerChoice === "scissors" && computerChoice === "rock"){
-            console.log(`You lose! ${computerChoice} beats ${playerChoice}`);
+            results.textContent = `You lose! ${computerChoice} beats ${playerChoice}`;
             computerScore ++;
         }
     
     else if(playerChoice === "paper" && computerChoice === "rock") {
-        console.log(`You win! ${playerChoice} beats ${computerChoice}`);
+        results.textContent = `You win! ${playerChoice} beats ${computerChoice}`;
         humanScore++;
     }
     else if(playerChoice === "paper" && computerChoice === "scissors"){
-            console.log(`You lose! ${computerChoice} beats ${playerChoice}`);
+            results.textContent = `You lose! ${computerChoice} beats ${playerChoice}`;
             computerScore ++;
         }
     
     else{
-        console.log(`It's a tie! You chose ${playerChoice} and the computer chose ${computerChoice}`);
+        results.textContent = `It's a tie! You chose ${playerChoice} and the computer chose ${computerChoice}`;
     }
 }
 
@@ -88,6 +88,11 @@ scissors.addEventListener("click", () => playRound("scissors"));
 body.appendChild(rock);
 body.appendChild(paper);
 body.appendChild(scissors);
+
+const results = document.createElement("div");
+results.classList.add("result");
+
+body.appendChild(results);
 
 
 
