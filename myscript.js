@@ -32,38 +32,56 @@ let computerScore = 0;
 
 
 function playRound(buttonChoice, computerChoice = getComputerChoice()) {
-
+    
     let playerChoice = getPlayerChoice(buttonChoice);
 
     if(playerChoice === "rock" && computerChoice === "scissors") {
         results.textContent = `You win! ${playerChoice} beats ${computerChoice}`;
         humanScore++;
+        playerScore.textContent = "Player: " + humanScore;
+        
     }
     else if (playerChoice === "rock" && computerChoice === "paper"){
             results.textContent = `You lose! ${computerChoice} beats ${playerChoice}`;
             computerScore ++;
+            compScore.textContent = "Computer: " + computerScore;
         }
     
     else if(playerChoice === "scissors" && computerChoice === "paper") {
         results.textContent = `You win! ${playerChoice} beats ${computerChoice}`;
         humanScore++;
+        playerScore.textContent = "Player: " + humanScore;
     }
     else if(playerChoice === "scissors" && computerChoice === "rock"){
             results.textContent = `You lose! ${computerChoice} beats ${playerChoice}`;
             computerScore ++;
+            compScore.textContent = "Computer: " + computerScore;
         }
     
     else if(playerChoice === "paper" && computerChoice === "rock") {
         results.textContent = `You win! ${playerChoice} beats ${computerChoice}`;
         humanScore++;
+        playerScore.textContent = "Player: " + humanScore;
     }
     else if(playerChoice === "paper" && computerChoice === "scissors"){
             results.textContent = `You lose! ${computerChoice} beats ${playerChoice}`;
             computerScore ++;
+            compScore.textContent = "Computer: " + computerScore;
         }
     
     else{
         results.textContent = `It's a tie! You chose ${playerChoice} and the computer chose ${computerChoice}`;
+    }
+
+    if(humanScore === 5) {
+        alert("You have won!");
+        humanScore = 0;
+        computerScore = 0;
+    }
+    else if(computerScore === 5) {
+        alert ("The computer has won! You lose!")
+        humanScore = 0;
+        computerScore = 0;
     }
 }
 
@@ -94,7 +112,22 @@ results.classList.add("result");
 
 body.appendChild(results);
 
+const score = document.createElement("div");
+score.classList.add("scores");
 
+body.appendChild(score);
+
+const playerScore = document.createElement("h1");
+const compScore = document.createElement("h1");
+
+playerScore.classList.add("pScore");
+compScore.classList.add("cScore");
+
+playerScore.textContent = "Player: " + humanScore;
+compScore.textContent = "Computer: " + computerScore;
+
+score.appendChild(playerScore);
+score.appendChild(compScore);
 
 
 
